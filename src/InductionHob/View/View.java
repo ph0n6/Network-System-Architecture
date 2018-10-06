@@ -12,6 +12,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class View implements Initializable, ViewInterface {
+    //Variables of Hob
+    int temp = 0;
+
     /* View Button */
     @FXML
     Text tempDisplay;
@@ -37,14 +40,19 @@ public class View implements Initializable, ViewInterface {
     }
     @Override
     public void increaseTemp(){
+        setTempDisplay();
         System.out.println("Increase Temp");
     }
     @Override
     public void decreaseTemp(){
         System.out.println("Decrease Temp");
+        setTempDisplay();
     }
     @Override
-    public void setTempDisplay() {System.out.println("Set Temp display");}
+    public void setTempDisplay() {
+        tempDisplay.setText(String.valueOf(temp));
+        System.out.println("Set Temp display");
+    }
     @Override
     public void setTimerDisplay() {System.out.println("Set Timer display");}
     @Override

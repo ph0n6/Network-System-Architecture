@@ -1,2 +1,15 @@
 
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(…Úûªÿÿÿÿÿ
+ssquid:S3008"PRename this field "STEAM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­“±şÿÿÿÿ8Õ«Æîä,
+rsquid:S3008"ORename this field "BOIL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÌ‡ûÿÿÿÿ8Õ«Æîä,
+lsquid:S3008"NRename this field "FRY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡şØ‡8Õ«Æîä,
+Nsquid:S1444"+Make this "public static STEAM" field final(­“±şÿÿÿÿ8Õ«Æîä,
+tsquid:S3008"QRename this field "NORMAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ç®ıüşÿÿÿÿ8ô¹ûîä,
+Xsquid:S1118":Add a private constructor to hide the implicit public one.(ãÚÿ8Õ«Æîä,
+~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(…Úûªÿÿÿÿÿ8ôë°îä,
+„"squid:ClassVariableVisibilityCheck"OMake FRY a static final constant or non-public and provide accessors if needed.(¡şØ‡8Ú¬¶îä,
+Š"squid:ClassVariableVisibilityCheck"PMake BOIL a static final constant or non-public and provide accessors if needed.(ÁÌ‡ûÿÿÿÿ8Ú¬¶îä,
+Osquid:S1444",Make this "public static NORMAL" field final(ç®ıüşÿÿÿÿ8ô¹ûîä,
+Msquid:S1444"*Make this "public static BOIL" field final(ÁÌ‡ûÿÿÿÿ8Õ«Æîä,
+‹"squid:ClassVariableVisibilityCheck"QMake STEAM a static final constant or non-public and provide accessors if needed.(­“±şÿÿÿÿ8Ú¬¶îä,
+Œ"squid:ClassVariableVisibilityCheck"RMake NORMAL a static final constant or non-public and provide accessors if needed.(ç®ıüşÿÿÿÿ8ô¹ûîä,
+Gsquid:S1444")Make this "public static FRY" field final(¡şØ‡8Õ«Æîä,

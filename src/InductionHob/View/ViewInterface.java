@@ -9,6 +9,8 @@ public interface ViewInterface {
     public void lockHob();
     public void setTimer();
     public void chooseCookingMode();
+
+    public void onPowerStatusChange(boolean status);
 }
 
 

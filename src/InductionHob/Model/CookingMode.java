@@ -1,7 +1,8 @@
 package InductionHob.Model;
 
-public enum CookingMode {
-    FRY,
-    STEAM,
-    BOIL
+public class CookingMode {
+    public static String NORMAL = "Normal";
+    public static String FRY = "Fry";
+    public static String STEAM = "Steam";
+    public static String BOIL = "Boil";
 }

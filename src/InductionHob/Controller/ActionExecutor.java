@@ -15,6 +15,12 @@ public class ActionExecutor {
         this.controller = controller;
     }
 
+    private void printAction() {
+        System.out.println("===============================");
+        System.out.println("Successfully called set action!");
+        System.out.println("===============================");
+    }
+
     public void setPowerStatus(UpnpService upnpService, Service service, boolean value) {
         ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_TARGET));
         getTargetInvocation.setInput(Constants.NEW_TARGET_VALUE, value);
@@ -24,7 +30,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -36,7 +42,7 @@ public class ActionExecutor {
     }
 
     public void setVolume(UpnpService upnpService, Service service, int value) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_VOLUME));
+        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_TEMP));
         getTargetInvocation.setInput(Constants.IN, value);
         upnpService.getControlPoint().execute(
                 new ActionCallback(getTargetInvocation) {
@@ -44,7 +50,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -56,14 +62,14 @@ public class ActionExecutor {
     }
 
     public void increaseVolume(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.INCREASE_VOLUME));
+        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.INCREASE_TEMP));
         upnpService.getControlPoint().execute(
                 new ActionCallback(getTargetInvocation) {
 
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -75,14 +81,14 @@ public class ActionExecutor {
     }
 
     public void decreaseVolume(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.DECREASE_VOLUME));
+        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.DECREASE_TEMP));
         upnpService.getControlPoint().execute(
                 new ActionCallback(getTargetInvocation) {
 
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -93,124 +99,9 @@ public class ActionExecutor {
         );
     }
 
-    public void setBassLevel(UpnpService upnpService, Service service, int value) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_BASS_LEVEL));
-        getTargetInvocation.setInput(Constants.IN, value);
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
-    public void increaseBassLevel(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.INCREASE_BASS_LEVEL));
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
-    public void decreaseBassLevel(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.DECREASE_BASS_LEVEL));
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
-    public void setTrebleLevel(UpnpService upnpService, Service service, int value) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_TREBLE_LEVEL));
-        getTargetInvocation.setInput(Constants.IN, value);
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
-    public void increaseTrebleLevel(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.INCREASE_TREBLE_LEVEL));
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
-    public void decreaseTrebleLevel(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.DECREASE_TREBLE_LEVEL));
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
 
 //    public void setAudioMode(UpnpService upnpService, Service service, AudioMode value) {
-//        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_AUDIO_MODE));
+//        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_COOKING_MODE));
 //        getTargetInvocation.setInput(Constants.IN, value.toString());
 //        upnpService.getControlPoint().execute(
 //                new ActionCallback(getTargetInvocation) {
@@ -222,7 +113,7 @@ public class ActionExecutor {
 //                    }
 //
 //                    @Override
-//                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
+//                    public void failure(ActionInvocation invocation, UpnpResponse operation, CookingMode defaultMsg) {
 //                        System.err.println(defaultMsg);
 //                    }
 //                }
@@ -238,7 +129,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -258,7 +149,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -277,7 +168,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -296,7 +187,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -316,7 +207,7 @@ public class ActionExecutor {
                     @Override
                     public void success(ActionInvocation invocation) {
                         assert invocation.getOutput().length == 0;
-                        System.out.println("Successfully called set action!");
+                        printAction();
                     }
 
                     @Override
@@ -349,7 +240,7 @@ public class ActionExecutor {
     }
 
     public void getVolume(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_VOLUME));
+        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_TEMP));
         getTargetInvocation.getOutput(Constants.OUT);
         upnpService.getControlPoint().execute(
                 new ActionCallback(getTargetInvocation) {
@@ -369,50 +260,8 @@ public class ActionExecutor {
         );
     }
 
-    public void getBassLevel(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_BASS_LEVEL));
-        getTargetInvocation.getOutput(Constants.OUT);
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        int bassLevel = (int) invocation.getOutput()[0].getValue();
-                        System.out.println("Current bassLevel: " + bassLevel);
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
-    public void getTrebleLevel(UpnpService upnpService, Service service) {
-        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_TREBLE_LEVEL));
-        getTargetInvocation.getOutput(Constants.OUT);
-        upnpService.getControlPoint().execute(
-                new ActionCallback(getTargetInvocation) {
-
-                    @Override
-                    public void success(ActionInvocation invocation) {
-                        assert invocation.getOutput().length == 0;
-                        int trebleLevel = (int) invocation.getOutput()[0].getValue();
-                        System.out.println("Current trebleLevel: " + trebleLevel);
-                    }
-
-                    @Override
-                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
-                        System.err.println(defaultMsg);
-                    }
-                }
-        );
-    }
-
 //    public void getAudioMode(UpnpService upnpService, Service service) {
-//        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_AUDIO_MODE));
+//        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_COOKING_MODE));
 //        getTargetInvocation.getOutput(Constants.OUT);
 //        upnpService.getControlPoint().execute(
 //                new ActionCallback(getTargetInvocation) {
@@ -425,7 +274,7 @@ public class ActionExecutor {
 //                    }
 //
 //                    @Override
-//                    public void failure(ActionInvocation invocation, UpnpResponse operation, String defaultMsg) {
+//                    public void failure(ActionInvocation invocation, UpnpResponse operation, CookingMode defaultMsg) {
 //                        System.err.println(defaultMsg);
 //                    }
 //                }

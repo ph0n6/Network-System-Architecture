@@ -13,3 +13,13 @@ W
 +src/InductionHob/Controller/Controller.java,f\8\f8c49e19c5134421b6ed9719ca0b1872aea194ca
 d
 4src/InductionHob/Controller/ControllerInterface.java,7\e\7e042b72ab6c422876899e84628c116a961a224c
+X
+(src/InductionHob/Model/InductionHob.java,a\8\a85a06cf63ba3fe4fec64aa9a7c01b2aaddb0424
+O
+src/InductionHob/Constants.java,d\0\d0ddbc6ba390fb749a0b644a048463fe4f1ad8d3
+_
+/src/InductionHob/Model/Service/SwitchPower.java,3\6\36a461d7eca14e04aff5db87b04a611a5d6da947
+_
+/src/InductionHob/Controller/ActionExecutor.java,0\1\0189d0b66b5881f50f194f03e5c3fbe8ad4076cc
+b
+2src/InductionHob/Model/Service/CookingControl.java,3\5\355160ffbec3aa05f4b64894bd7ca11ebc838c67

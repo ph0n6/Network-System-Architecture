@@ -1,12 +1,14 @@
 package InductionHob;
 
+import InductionHob.Model.CookingMode;
+
 public class Constants {
     // device
-    public static final String DEVICE_NAME = "AudioSystem";
-    public static final String MANUFACTURER_DETAILS = "1918";
-    public static final String MODEL_DETAILS = "AS2018";
-    public static final String MODEL_DESCRIPTION = "Simple Audio System";
-    public static final String MODEL_NUMBER = "v1";
+    public static final String DEVICE_NAME = "InductionHob";
+    public static final String MANUFACTURER_DETAILS = "ICT";
+    public static final String MODEL_DETAILS = "NSA20181";
+    public static final String MODEL_DESCRIPTION = "Induction Hob System";
+    public static final String MODEL_NUMBER = "v69";
 
     // switch power service
     public static final String SWITCH_POWER = "SwitchPower";
@@ -20,25 +22,15 @@ public class Constants {
     public static final String RESULT_STATUS = "ResultStatus";
 
     // audio control service
-    public static final String AUDIO_CONTROL = "AudioControl";
-    public static final String VOLUME = "Volume";
-    public static final String GET_VOLUME = "GetVolume";
-    public static final String SET_VOLUME = "SetVolume";
-    public static final String INCREASE_VOLUME = "IncreaseVolume";
-    public static final String DECREASE_VOLUME = "DecreaseVolume";
-    public static final String BASS_LEVEL = "BassLevel";
-    public static final String GET_BASS_LEVEL = "GetBassLevel";
-    public static final String SET_BASS_LEVEL = "SetBassLevel";
-    public static final String INCREASE_BASS_LEVEL = "IncreaseBassLevel";
-    public static final String DECREASE_BASS_LEVEL = "DecreaseBassLevel";
-    public static final String TREBLE_LEVEL = "TrebleLevel";
-    public static final String GET_TREBLE_LEVEL = "GetTrebleLevel";
-    public static final String SET_TREBLE_LEVEL = "SetTrebleLevel";
-    public static final String INCREASE_TREBLE_LEVEL = "IncreaseTrebleLevel";
-    public static final String DECREASE_TREBLE_LEVEL = "DecreaseTrebleLevel";
-    public static final String AUDIO_MODE = "AudioMode";
-    public static final String GET_AUDIO_MODE = "GetAudioMode";
-    public static final String SET_AUDIO_MODE = "SetAudioMode";
+    public static final String COOKING_CONTROL = "Cooking Control";
+    public static final String TEMP = "Temp";
+    public static final String GET_TEMP = "GetTemp";
+    public static final String SET_TEMP = "SetTemp";
+    public static final String INCREASE_TEMP = "IncreaseTemp";
+    public static final String DECREASE_TEMP = "DecreaseTemp";
+    public static final String COOKING_MODE = "CookingMode";
+    public static final String GET_COOKING_MODE = "GetCookingMode";
+    public static final String SET_COOKING_MODE = "SetCookingMode";
 
     // play music service
     public static final String PLAY_MUSIC = "PlayMusic";
@@ -62,27 +54,17 @@ public class Constants {
     public static final String OUT = "Out";
 
     // resources
-    public static final String AUDIO_SYSTEM_IMAGE = "/resources/audio_system.png";
     public static final String INDUCTION_HOB_IMAGE = "../resources/induction_hob.png";
 
     // min-max values
-    public static final int VOLUME_DEFAULT = 100;
-    public static final int VOLUME_MAX = 100;
-    public static final int VOLUME_MIN = 0;
-    public static final int BASS_MAX = 120;
-    public static final int BASS_MIN = 0;
-    public static final int BASS_DEFAULT = 0;
-    public static final int TREBLE_MAX = 120;
-    public static final int TREBLE_MIN = 0;
-    public static final int TREBLE_DEFAULT = 0;
+    public static final int TEMP_DEFAULT = 0;
+    public static final int TEMP_MAX = 2200;
+    public static final int TEMP_MIN = 0;
     public static final int TIMER_MIN = 0;
     public static final int TIMER_MAX = Integer.MAX_VALUE;
-    public static final int TRACK_MIN = 0;
-    public static final int TRACK_MAX = Integer.MAX_VALUE;
     public static final boolean TIMER_STATUS_DEFAULT = false;
-    public static final boolean PLAY_STATUS_DEFAULT = true;
-    public static final boolean POWER_STATUS_DEFAULT = true;
-//    public static final AudioMode AUDIO_MODE_DEFAULT = AudioMode.NORMAL;
+    public static final boolean POWER_STATUS_DEFAULT = false;
+    public static final String COOKING_MODE_DEFAULT = CookingMode.NORMAL;
     public static final int DEFAULT_TIMER_VALUE = 10;
 }
 

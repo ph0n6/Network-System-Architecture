@@ -2,23 +2,32 @@ package InductionHob.Controller;
 
 import InductionHob.Constants;
 import InductionHob.Model.CookingMode;
+import InductionHob.Model.Service.CookingControl;
+import InductionHob.Model.Service.SwitchPower;
 import InductionHob.View.ViewInterface;
 import org.fourthline.cling.UpnpService;
 import org.fourthline.cling.UpnpServiceImpl;
 import org.fourthline.cling.binding.LocalServiceBindingException;
 import org.fourthline.cling.binding.annotations.AnnotationLocalServiceBinder;
+import org.fourthline.cling.controlpoint.SubscriptionCallback;
 import org.fourthline.cling.model.DefaultServiceManager;
 import org.fourthline.cling.model.ValidationException;
+import org.fourthline.cling.model.gena.CancelReason;
+import org.fourthline.cling.model.gena.GENASubscription;
+import org.fourthline.cling.model.message.UpnpResponse;
 import org.fourthline.cling.model.message.header.UDADeviceTypeHeader;
 import org.fourthline.cling.model.meta.*;
+import org.fourthline.cling.model.state.StateVariableValue;
 import org.fourthline.cling.model.types.DeviceType;
 import org.fourthline.cling.model.types.UDADeviceType;
+import org.fourthline.cling.model.types.UDAServiceId;
 import org.fourthline.cling.model.types.UDN;
 import org.fourthline.cling.registry.DefaultRegistryListener;
 import org.fourthline.cling.registry.Registry;
 import org.fourthline.cling.registry.RegistryListener;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -38,9 +47,9 @@ public class Controller implements ControllerInterface{
             if (remoteDevice.getDetails().getModelDetails().getModelName().equals(Constants.MODEL_DETAILS)) {
                 System.out.println("Induction hob detected.");
                 device = remoteDevice;
-//                upnpService.getControlPoint().execute(createPowerSwitchSubscriptionCallBack(getServiceById(device, Constants.SWITCH_POWER)));
-//                upnpService.getControlPoint().execute(createAudioControlSubscriptionCallBack(getServiceById(device, Constants.AUDIO_CONTROL)));
-//                upnpService.getControlPoint().execute(createPlayMusicSubscriptionCallBack(getServiceById(device, Constants.PLAY_MUSIC)));
+                upnpService.getControlPoint().execute(createPowerSwitchSubscriptionCallBack(getServiceById(device, Constants.SWITCH_POWER)));
+//                upnpService.getControlPoint().execute(createCookingControlSubscriptionCallBack(getServiceById(device, Constants.COOKING_CONTROL)));
+//                upnpService.getControlPoint().execute(createPlayMusicSubscriptionCallBack(getServiceById(device, Constants.PLAY_MUSIC)));k(getServiceBy
             }
         }
 
@@ -58,14 +67,14 @@ public class Controller implements ControllerInterface{
             if (localDevice.getDetails().getModelDetails().getModelName().equals(Constants.MODEL_DETAILS)) {
                 System.out.println("Induction hob detected.");
                 device = localDevice;
-//                upnpService.getControlPoint().execute(createPowerSwitchSubscriptionCallBack(getServiceById(device, Constants.SWITCH_POWER)));
-//                upnpService.getControlPoint().execute(createAudioControlSubscriptionCallBack(getServiceById(device, Constants.AUDIO_CONTROL)));
+                upnpService.getControlPoint().execute(createPowerSwitchSubscriptionCallBack(getServiceById(device, Constants.SWITCH_POWER)));
+//                upnpService.getControlPoint().execute(createCookingControlSubscriptionCallBack(getServiceById(device, Constants.COOKING_CONTROL)));
 //                upnpService.getControlPoint().execute(createPlayMusicSubscriptionCallBack(getServiceById(device, Constants.PLAY_MUSIC)));
                 Executors.newSingleThreadScheduledExecutor().schedule(new Runnable() {
                     @Override
                     public void run() {
-//                        setPowerStatus(Constants.POWER_STATUS_DEFAULT);
-//                        setVolume(Constants.VOLUME_DEFAULT);
+                        power(Constants.POWER_STATUS_DEFAULT);
+//                        setTemp(Constants.TEMP_DEFAULT);
 //                        setPlayStatus(Constants.PLAY_STATUS_DEFAULT);
 //                        setMode(AudioMode.NORMAL);
                     }
@@ -120,21 +129,30 @@ public class Controller implements ControllerInterface{
 
         Icon icon = new Icon("image/png", 48, 48, 8, getClass().getResource(Constants.INDUCTION_HOB_IMAGE));
 
-//        LocalService<SwitchPower> switchPowerService = new AnnotationLocalServiceBinder().read(SwitchPower.class);
-//        switchPowerService.setManager(new DefaultServiceManager(switchPowerService, SwitchPower.class));
-//        LocalService<AudioControl> audioControlService = new AnnotationLocalServiceBinder().read(AudioControl.class);
-//        audioControlService.setManager(new DefaultServiceManager(audioControlService, AudioControl.class));
+        LocalService<SwitchPower> switchPowerService = new AnnotationLocalServiceBinder().read(SwitchPower.class);
+        switchPowerService.setManager(new DefaultServiceManager(switchPowerService, SwitchPower.class));
+
+//        LocalService<CookingControl> cookingControlLocalService = new AnnotationLocalServiceBinder().read(CookingControl.class);
+//        cookingControlLocalService.setManager(new DefaultServiceManager(cookingControlLocalService, CookingControl.class));
+//
 //        LocalService<PlayMusic> playMusicService = new AnnotationLocalServiceBinder().read(PlayMusic.class);
 //        playMusicService.setManager(new DefaultServiceManager(playMusicService, PlayMusic.class));
 
         return new LocalDevice(
                 identity, type, details, icon,
                 new LocalService[]{
-//                        switchPowerService,
-//                        audioControlService,
+                        switchPowerService,
+//                        cookingControlLocalService,
 //                        playMusicService
                 }
         );
+    }
+
+    private Service getServiceById(Device device, String serviceId) {
+        if (device == null) {
+            return null;
+        }
+        return device.findService(new UDAServiceId(serviceId));
     }
 
     @Override
@@ -149,6 +167,16 @@ public class Controller implements ControllerInterface{
 
     @Override
     public boolean power(boolean status) {
+        Service service = getServiceById(device, Constants.SWITCH_POWER);
+        if (service != null) {
+            actionExecutor.setPowerStatus(upnpService, service, status);
+//            if (!status) {
+//                Service playMusicService = getServiceById(device, Constants.PLAY_MUSIC);
+//                if (playMusicService != null) {
+//                    actionExecutor.setPlayStatus(upnpService, playMusicService, false);
+//                }
+//            }
+        }
         return true;
     }
 
@@ -166,4 +194,99 @@ public class Controller implements ControllerInterface{
     public boolean changeCookingMode(CookingMode cookingMode) {
         return true;
     }
+
+    private SubscriptionCallback createPowerSwitchSubscriptionCallBack(Service service) {
+        return new SubscriptionCallback(service, Integer.MAX_VALUE) {
+            @Override
+            protected void failed(GENASubscription genaSubscription, UpnpResponse upnpResponse, Exception e, String s) {
+
+            }
+
+            @Override
+            protected void established(GENASubscription genaSubscription) {
+                System.out.println("Power switch subscription created.");
+//                setPowerStatus(Constants.POWER_STATUS_DEFAULT);
+            }
+
+            @Override
+            protected void ended(GENASubscription genaSubscription, CancelReason cancelReason, UpnpResponse upnpResponse) {
+
+            }
+
+            @Override
+            public void eventReceived(GENASubscription sub) {
+                System.out.println("Event: " + sub.getCurrentSequence().getValue());
+                Map<String, StateVariableValue> values = sub.getCurrentValues();
+                for (String key : values.keySet()) {
+                    System.out.println(key + " changed.");
+                }
+                if (values.containsKey(Constants.STATUS)) {
+                    boolean value = (boolean) values.get(Constants.STATUS).getValue();
+                    view.onPowerStatusChange(value);
+//                    if (!value) {
+//                        view.onPlayStatusChange(false);
+//                    }
+//                    view.onPlayStatusChange(value);
+                    System.out.println("New value: " + value);
+                }
+            }
+
+            @Override
+            public void eventsMissed(GENASubscription sub, int numberOfMissedEvents) {
+                System.out.println("Missed events: " + numberOfMissedEvents);
+            }
+        };
+    }
+
+//    private SubscriptionCallback createCookingControlSubscriptionCallBack(Service service) {
+//        return new SubscriptionCallback(service, Integer.MAX_VALUE) {
+//            @Override
+//            protected void failed(GENASubscription genaSubscription, UpnpResponse upnpResponse, Exception e, String s) {
+//
+//            }
+//
+//            @Override
+//            protected void established(GENASubscription genaSubscription) {
+//                System.out.println("Cooking control subscription created.");
+////                setVolume(Constants.VOLUME_DEFAULT);
+////                setMode(AudioMode.NORMAL);
+//            }
+//
+//            @Override
+//            protected void ended(GENASubscription genaSubscription, CancelReason cancelReason, UpnpResponse upnpResponse) {
+//
+//            }
+//
+//            @Override
+//            public void eventReceived(GENASubscription sub) {
+//                System.out.println("Event: " + sub.getCurrentSequence().getValue());
+//                Map<String, StateVariableValue> values = sub.getCurrentValues();
+//                for (String key : values.keySet()) {
+//                    System.out.println(key + " changed.");
+//                }
+//                if (values.containsKey(Constants.TEMP)) {
+//                    int value = (int) values.get(Constants.TEMP).getValue();
+//                    view.onVolumeChange(value);
+//                    System.out.println("New value: " + value);
+//                } else if (values.containsKey(Constants.BASS_LEVEL)) {
+//                    int value = (int) values.get(Constants.BASS_LEVEL).getValue();
+//                    view.onBassLevelChange(value);
+//                    System.out.println("New value: " + value);
+//                } else if (values.containsKey(Constants.TREBLE_LEVEL)) {
+//                    int value = (int) values.get(Constants.TREBLE_LEVEL).getValue();
+//                    view.onTrebleLevelChange(value);
+//                    System.out.println("New value: " + value);
+//                } else if (values.containsKey(Constants.AUDIO_MODE)) {
+//                    String value = (String) values.get(Constants.AUDIO_MODE).getValue();
+//                    view.onModeChange(AudioMode.valueOf(value));
+//                    System.out.println("New value: " + value);
+//                }
+//            }
+//
+//            @Override
+//            public void eventsMissed(GENASubscription sub, int numberOfMissedEvents) {
+//                System.out.println("Missed events: " + numberOfMissedEvents);
+//            }
+//        };
+//    }
 }

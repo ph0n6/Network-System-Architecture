@@ -1,14 +1,43 @@
 
-[
-squid:S106E"9Replace this use of System.out or System.err by a logger.(“™„·ÿÿÿÿÿ8˜ô‰Èä,
-N
-squid:S1061"9Replace this use of System.out or System.err by a logger.(æÛ
-T
-squid:S106@"9Replace this use of System.out or System.err by a logger.(£ı‰Ôıÿÿÿÿ
-N
-squid:S106;"9Replace this use of System.out or System.err by a logger.(äúÍI
-T
-squid:S1066"9Replace this use of System.out or System.err by a logger.(µ‹ùÿÿÿÿ
+osquid:CommentedOutCodeLineÙ"<This block of commented-out lines of code should be removed.(®ÿ½¨üÿÿÿÿ8²¦’ñä,
+lsquid:S1192N"NDefine a constant instead of duplicating this literal "System Locked" 5 times.(ñİˆ8±‘‹îä,
+isquid:S1192)"FDefine a constant instead of duplicating this literal "Steam" 3 times.(£àÖúÿÿÿÿ8ºîğğä,
 V
-squid:S106,"9Replace this use of System.out or System.err by a logger.(ÎıÄ²8àµÑÇä,
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(õ¹§Íüÿÿÿÿ
+squid:S106N"9Replace this use of System.out or System.err by a logger.(ñİˆ8÷×‡îä,
+[
+squid:S106U"9Replace this use of System.out or System.err by a logger.(€Â—Œÿÿÿÿÿ8²çííä,
+V
+squid:S106g"9Replace this use of System.out or System.err by a logger.(ÅÌ°˜8Ñğğíä,
+[
+squid:S106~"9Replace this use of System.out or System.err by a logger.(µ‹ùÿÿÿÿ8ñ¶‚íä,
+W
+squid:S106"9Replace this use of System.out or System.err by a logger.(¦·ß8ñ¶‚íä,
+\
+squid:S106³"9Replace this use of System.out or System.err by a logger.(£ı‰Ôıÿÿÿÿ8±‘‹îä,
+V
+squid:S106y"9Replace this use of System.out or System.err by a logger.(ñİˆ8½é„îä,
+osquid:CommentedOutCodeLineÔ"<This block of commented-out lines of code should be removed.(®ÿ½¨üÿÿÿÿ8”•’ñä,
+W
+squid:S106Ã"9Replace this use of System.out or System.err by a logger.(ñİˆ8ÙÃáîä,
+~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(õ¹§Íüÿÿÿÿ8ñ¶‚íä,
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÜôĞúÿÿÿÿ8±‘‹îä,
+nsquid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(Ò© ¼ùÿÿÿÿ8ñ¶‚íä,
+isquid:CommentedOutCodeLinen"<This block of commented-out lines of code should be removed.(ÉŞÌä8÷¤îä,
+Lsquid:S1604Ì"(Make this anonymous inner class a lambda(ôâŠûıÿÿÿÿ8›®éğä,
+W
+squid:S106°"9Replace this use of System.out or System.err by a logger.(ñİˆ8±‘‹îä,
+W
+squid:S106Ç"9Replace this use of System.out or System.err by a logger.(±¦â‚8±‘‹îä,
+V
+squid:S106S"9Replace this use of System.out or System.err by a logger.(ÎıÄ²8²çííä,
+V
+squid:S106`"9Replace this use of System.out or System.err by a logger.(ñİˆ8Îøƒîä,
+U
+squid:S106s"9Replace this use of System.out or System.err by a logger.(›‘R8ñ¶‚íä,
+V
+squid:S106£"9Replace this use of System.out or System.err by a logger.(äúÍI8±‘‹îä,
+Msquid:EmptyStatementUsageCheckR"Remove this empty statement.(üæíÿ8ôÛ¡îä,
+jsquid:S1192)"GDefine a constant instead of duplicating this literal "Normal" 3 times.(£àÖúÿÿÿÿ8ºîğğä,
+U
+squid:S106e"9Replace this use of System.out or System.err by a logger.(æÛ8Ñğğíä,

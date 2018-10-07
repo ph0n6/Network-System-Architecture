@@ -29,12 +29,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="tempDisplay" GridPane.columnIndex="1" />
-                  <TextField fx:id="timerDisplay" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Timer" textAlignment="CENTER" wrappingWidth="102.1279296875" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature" textAlignment="CENTER" wrappingWidth="102.142578125" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button fx:id="decreaseTempButton" mnemonicParsing="false" onAction="#decreaseTemp" prefHeight="27.0" prefWidth="105.0" text="-" />
                   <Button fx:id="increaseTempButton" mnemonicParsing="false" onAction="#increaseTemp" prefHeight="27.0" prefWidth="121.0" text="+" GridPane.columnIndex="2" />
+                  <Text fx:id="tempDisplay" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="100.0" GridPane.columnIndex="1" />
+                  <Text fx:id="timerDisplay" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00" textAlignment="CENTER" wrappingWidth="101.21875" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <GridPane layoutX="190.0" layoutY="200.0" prefHeight="120.0" prefWidth="260.0">
@@ -54,7 +54,7 @@
                   <TextField fx:id="timerField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <ComboBox fx:id="cookingMode" layoutX="190.0" layoutY="331.0" onAction="#changeCookingMode" prefHeight="27.0" prefWidth="260.0" />
+            <ComboBox fx:id="cookingMode" layoutX="190.0" layoutY="331.0" onAction="#chooseCookingMode" prefHeight="27.0" prefWidth="260.0" promptText="Use Cooking Preset" />
             <VBox layoutX="20.0" layoutY="90.0" prefHeight="200.0" prefWidth="100.0" />
       </children>
     </AnchorPane>

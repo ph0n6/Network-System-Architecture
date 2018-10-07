@@ -1,5 +1,6 @@
 package InductionHob.View;
 
+import InductionHob.Controller.ControllerInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,6 +12,8 @@ import java.util.ResourceBundle;
 public class View implements Initializable, ViewInterface {
     //Variables of Hob
     int temp = 0;
+
+    private ControllerInterface controller;
 
     /* View Button */
     @FXML
@@ -34,7 +37,12 @@ public class View implements Initializable, ViewInterface {
         // Add option to cooking mode
         cookingMode.getItems().addAll("Fry", "Steam", "Boil", "Custom");
         //cookingMode.setPromptText("Use Cooking preset");
-        }
+    }
+
+    public void setController(ControllerInterface controller) {
+        this.controller = controller;
+    }
+
     @Override
     public void increaseTemp(){
         setTempDisplay();

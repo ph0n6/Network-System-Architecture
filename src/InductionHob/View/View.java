@@ -2,10 +2,7 @@ package InductionHob.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -37,7 +34,7 @@ public class View implements Initializable, ViewInterface {
         // Add option to cooking mode
         cookingMode.getItems().addAll("Fry", "Steam", "Boil", "Custom");
         //cookingMode.setPromptText("Use Cooking preset");
-    }
+        }
     @Override
     public void increaseTemp(){
         setTempDisplay();
@@ -57,11 +54,21 @@ public class View implements Initializable, ViewInterface {
     public void setTimerDisplay() {System.out.println("Set Timer display");}
     @Override
     public void powerHob(){
-        System.out.println("Power off");
+        if (!powerButton.isSelected()){
+            System.out.println("Power off");
+        }
+        else {
+            System.out.println("Power on");
+        }
     }
     @Override
     public void lockHob(){
-        System.out.println("Lock");
+        if (lockButton.isSelected()) {
+            System.out.println("Lock");
+        }
+        else{
+            System.out.println("Unlock");
+        }
     }
     @Override
     public void setTimer(){
@@ -69,9 +76,11 @@ public class View implements Initializable, ViewInterface {
     }
     @Override
     public void chooseCookingMode(){
-        cookingMode.setOnAction(e -> setCookingMode());
+        cookingMode.setOnAction(e -> setCookingMode(cookingMode.getValue().toString()));
     }
-    public void setCookingMode(){
-        System.out.println("Set cooking mode to " + cookingMode.getValue());
+    public void setCookingMode(String cookingModeValue){
+        System.out.println("Set cooking mode to " + cookingModeValue);
     }
+
+
 }

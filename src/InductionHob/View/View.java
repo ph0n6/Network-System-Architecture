@@ -1,23 +1,22 @@
 package InductionHob.View;
 
-import InductionHob.Controller.ControllerInterface;
-import InductionHob.Model.CookingMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class View implements Initializable, ViewInterface {
+    //Variables of Hob
+    int temp = 0;
+
     /* View Button */
     @FXML
-    TextField tempDisplay;
+    Text tempDisplay;
     @FXML
-    TextField timerDisplay;
+    Text timerDisplay;
     @FXML
     Button decreaseTempButton;
     @FXML
@@ -31,44 +30,57 @@ public class View implements Initializable, ViewInterface {
     @FXML
     ComboBox cookingMode;
 
-    private boolean on;
-
-    private ControllerInterface controller;
-
     public void initialize(URL location, ResourceBundle resources) {
         // Add option to cooking mode
-        cookingMode.getItems().addAll("Fry", "Steam", "Boil");
-        cookingMode.setPromptText("Change Cooking mode");
-    }
-
+        cookingMode.getItems().addAll("Fry", "Steam", "Boil", "Custom");
+        //cookingMode.setPromptText("Use Cooking preset");
+        }
+    @Override
     public void increaseTemp(){
-        controller.increaseTemp();
+        setTempDisplay();
         System.out.println("Increase Temp");
     }
-
+    @Override
     public void decreaseTemp(){
-        controller.decreaseTemp();
         System.out.println("Decrease Temp");
+        setTempDisplay();
     }
-
+    @Override
+    public void setTempDisplay() {
+        tempDisplay.setText(String.valueOf(temp));
+        System.out.println("Set Temp display");
+    }
+    @Override
+    public void setTimerDisplay() {System.out.println("Set Timer display");}
+    @Override
     public void powerHob(){
-        controller.power(true);
-        System.out.println("Power off");
+        if (!powerButton.isSelected()){
+            System.out.println("Power off");
+        }
+        else {
+            System.out.println("Power on");
+        }
     }
-
+    @Override
     public void lockHob(){
-        controller.lock(true);
-        System.out.println("Lock");
+        if (lockButton.isSelected()) {
+            System.out.println("Lock");
+        }
+        else{
+            System.out.println("Unlock");
+        }
     }
-
+    @Override
     public void setTimer(){
-        controller.setTimer(1);
         System.out.println("Set Timer");
     }
-
-    public void changeCookingMode() {
-        controller.changeCookingMode(CookingMode.FRY);
-        System.out.println("Change Cooking Mode");
+    @Override
+    public void chooseCookingMode(){
+        cookingMode.setOnAction(e -> setCookingMode(cookingMode.getValue().toString()));
     }
+    public void setCookingMode(String cookingModeValue){
+        System.out.println("Set cooking mode to " + cookingModeValue);
+    }
+
 
 }

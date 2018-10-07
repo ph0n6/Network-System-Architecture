@@ -1,5 +1,7 @@
 package InductionHob.View;
 
+import InductionHob.Controller.ControllerInterface;
+import InductionHob.Model.CookingMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,6 +31,10 @@ public class View implements Initializable, ViewInterface {
     @FXML
     ComboBox cookingMode;
 
+    private boolean on;
+
+    private ControllerInterface controller;
+
     public void initialize(URL location, ResourceBundle resources) {
         // Add option to cooking mode
         cookingMode.getItems().addAll("Fry", "Steam", "Boil");
@@ -36,24 +42,33 @@ public class View implements Initializable, ViewInterface {
     }
 
     public void increaseTemp(){
+        controller.increaseTemp();
         System.out.println("Increase Temp");
     }
 
     public void decreaseTemp(){
+        controller.decreaseTemp();
         System.out.println("Decrease Temp");
     }
 
     public void powerHob(){
+        controller.power(true);
         System.out.println("Power off");
     }
 
     public void lockHob(){
+        controller.lock(true);
         System.out.println("Lock");
     }
 
     public void setTimer(){
+        controller.setTimer(1);
         System.out.println("Set Timer");
     }
 
+    public void changeCookingMode() {
+        controller.changeCookingMode(CookingMode.FRY);
+        System.out.println("Change Cooking Mode");
+    }
 
 }

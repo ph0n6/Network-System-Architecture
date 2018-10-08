@@ -1,46 +1,0 @@
-
-jsquid:CommentedOutCodeLine­"<This block of commented-out lines of code should be removed.(“ϊ—Λ8ΞÒοδ,
-isquid:CommentedOutCodeLine…"<This block of commented-out lines of code should be removed.(΄Ρ¥-8δεωπδ,
-isquid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(ήΦ·Ψ8δεωπδ,
-Fsquid:S1148k"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8ς¶‚νδ,
-osquid:CommentedOutCodeLineΠ"<This block of commented-out lines of code should be removed.(©οΊΫϋÿÿÿÿ8δεωπδ,
-osquid:CommentedOutCodeLineω"<This block of commented-out lines of code should be removed.(ϋυνΩωÿÿÿÿ8δεωπδ,
-jsquid:CommentedOutCodeLine‡"<This block of commented-out lines of code should be removed.(η„½8‹Π€ρδ,
-isquid:CommentedOutCodeLineG"<This block of commented-out lines of code should be removed.(ήΦ·Ψ8Χ»ϊπδ,
-osquid:CommentedOutCodeLineφ"<This block of commented-out lines of code should be removed.(ιΨ»Ϊϋÿÿÿÿ8δεωπδ,
-W
-squid:S106Ϊ"9Replace this use of System.out or System.err by a logger.(Στ”Ρ8δεωπδ,
-Esquid:S1604I"(Make this anonymous inner class a lambda(Στ΄8ς¶‚νδ,
-\
-squid:S106ζ"9Replace this use of System.out or System.err by a logger.(΅άύÿÿÿÿ8δεωπδ,
-[
-squid:S106B"9Replace this use of System.out or System.err by a logger.(―ξΛϋÿÿÿÿ8ς¶‚νδ,
-osquid:CommentedOutCodeLineρ"<This block of commented-out lines of code should be removed.(σΰΗωÿÿÿÿ8δεωπδ,
-jsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ιΈ8δεωπδ,
-osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ΈυΖώÿÿÿÿ8όΙνδ,
-¥squid:S1186Τ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Òξϊÿÿÿÿ8δεωπδ,
-Β%squid:RedundantThrowsDeclarationCheckx"„Remove the declaration of thrown exception 'org.fourthline.cling.binding.LocalServiceBindingException' which is a runtime exception.(ΌΥΘύÿÿÿÿ8ς¶‚νδ,
-osquid:CommentedOutCodeLine‚"<This block of commented-out lines of code should be removed.(ιΨ»Ϊϋÿÿÿÿ8δεωπδ,
-osquid:CommentedOutCodeLine€"<This block of commented-out lines of code should be removed.(»©ώύÿÿÿÿ8δεωπδ,
-\
-squid:S106έ"9Replace this use of System.out or System.err by a logger.(αγÒΕωÿÿÿÿ8δεωπδ,
-W
-squid:S106μ"9Replace this use of System.out or System.err by a logger.(µ¬ζ8δεωπδ,
-\
-squid:S106Ο"9Replace this use of System.out or System.err by a logger.(ÿΝΈ†ϊÿÿÿÿ8δεωπδ,
-[
-squid:S1060"9Replace this use of System.out or System.err by a logger.(”μ­¦ώÿÿÿÿ8ς¶‚νδ,
-]squid:S3398Ζ">Move this method into the anonymous class declared at line 43.(«ΝΎή8δεωπδ,
-[
-squid:S106."9Replace this use of System.out or System.err by a logger.(‚§Δƒÿÿÿÿÿ8ς¶‚νδ,
-[
-squid:S106X"9Replace this use of System.out or System.err by a logger.(ω¥μϊωÿÿÿÿ8ς¶‚νδ,
-[
-squid:S106D"9Replace this use of System.out or System.err by a logger.(”μ­¦ώÿÿÿÿ8ς¶‚νδ,
-jsquid:CommentedOutCodeLineτ"<This block of commented-out lines of code should be removed.(ΒΘ‡8δεωπδ,
-[
-squid:S106;"9Replace this use of System.out or System.err by a logger.(ω¥μϊωÿÿÿÿ8ς¶‚νδ,
-nsquid:CommentedOutCodeLineM"<This block of commented-out lines of code should be removed.(’Φ§»ύÿÿÿÿ8νρϊπδ,
- squid:S1186Ι"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ΕΕ°Β8δεωπδ,
-ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(τ·8ς¶‚νδ,
-jsquid:CommentedOutCodeLineβ"<This block of commented-out lines of code should be removed.(ϋιΒ¦8δεωπδ,

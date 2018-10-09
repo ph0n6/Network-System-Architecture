@@ -22,7 +22,7 @@ public class Constants {
     public static final String RESULT_STATUS = "ResultStatus";
 
     // audio control service
-    public static final String COOKING_CONTROL = "Cooking Control";
+    public static final String COOKING_CONTROL = "CookingControl";
     public static final String TEMP = "Temp";
     public static final String GET_TEMP = "GetTemp";
     public static final String SET_TEMP = "SetTemp";
@@ -60,11 +60,14 @@ public class Constants {
     public static final int TEMP_DEFAULT = 0;
     public static final int TEMP_MAX = 2200;
     public static final int TEMP_MIN = 0;
+    public static final int TEMP_STEP = 200;
     public static final int TIMER_MIN = 0;
     public static final int TIMER_MAX = Integer.MAX_VALUE;
     public static final boolean TIMER_STATUS_DEFAULT = false;
     public static final boolean POWER_STATUS_DEFAULT = false;
     public static final String COOKING_MODE_DEFAULT = CookingMode.NORMAL;
     public static final int DEFAULT_TIMER_VALUE = 10;
+
 }
+
 

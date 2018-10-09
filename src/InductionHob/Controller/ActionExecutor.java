@@ -41,7 +41,7 @@ public class ActionExecutor {
         );
     }
 
-    public void setVolume(UpnpService upnpService, Service service, int value) {
+    public void setTemp(UpnpService upnpService, Service service, int value) {
         ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_TEMP));
         getTargetInvocation.setInput(Constants.IN, value);
         upnpService.getControlPoint().execute(
@@ -61,7 +61,7 @@ public class ActionExecutor {
         );
     }
 
-    public void increaseVolume(UpnpService upnpService, Service service) {
+    public void increaseTemp(UpnpService upnpService, Service service) {
         ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.INCREASE_TEMP));
         upnpService.getControlPoint().execute(
                 new ActionCallback(getTargetInvocation) {
@@ -80,7 +80,7 @@ public class ActionExecutor {
         );
     }
 
-    public void decreaseVolume(UpnpService upnpService, Service service) {
+    public void decreaseTemp(UpnpService upnpService, Service service) {
         ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.DECREASE_TEMP));
         upnpService.getControlPoint().execute(
                 new ActionCallback(getTargetInvocation) {
@@ -100,7 +100,7 @@ public class ActionExecutor {
     }
 
 
-//    public void setAudioMode(UpnpService upnpService, Service service, AudioMode value) {
+//    public void setCookingMode(UpnpService upnpService, Service service, AudioMode value) {
 //        ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.SET_COOKING_MODE));
 //        getTargetInvocation.setInput(Constants.IN, value.toString());
 //        upnpService.getControlPoint().execute(
@@ -239,7 +239,7 @@ public class ActionExecutor {
         );
     }
 
-    public void getVolume(UpnpService upnpService, Service service) {
+    public void getTemp(UpnpService upnpService, Service service) {
         ActionInvocation getTargetInvocation = new ActionInvocation(service.getAction(Constants.GET_TEMP));
         getTargetInvocation.getOutput(Constants.OUT);
         upnpService.getControlPoint().execute(

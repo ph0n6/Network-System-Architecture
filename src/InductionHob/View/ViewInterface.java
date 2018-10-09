@@ -11,6 +11,7 @@ public interface ViewInterface {
     public void chooseCookingMode();
 
     public void onPowerStatusChange(boolean status);
+    public void onTempChange(int newValue);
 }
 
 

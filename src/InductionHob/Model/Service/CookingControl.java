@@ -1,28 +1,30 @@
 package InductionHob.Model.Service;
 
 import InductionHob.Constants;
-import org.fourthline.cling.binding.annotations.UpnpAction;
-import org.fourthline.cling.binding.annotations.UpnpInputArgument;
-import org.fourthline.cling.binding.annotations.UpnpOutputArgument;
-import org.fourthline.cling.binding.annotations.UpnpStateVariable;
-
+import org.fourthline.cling.binding.annotations.*;
 import java.beans.PropertyChangeSupport;
 
+@UpnpService(
+        serviceId = @UpnpServiceId(Constants.COOKING_CONTROL),
+        serviceType = @UpnpServiceType(value = Constants.COOKING_CONTROL, version = 1)
+)
 public class CookingControl {
+
     private final PropertyChangeSupport propertyChangeSupport;
 
     @UpnpStateVariable(
             defaultValue = "0",
             allowedValueMinimum = Constants.TEMP_MIN,
-            allowedValueMaximum = Constants.TEMP_MAX
+            allowedValueMaximum = Constants.TEMP_MAX,
+            allowedValueStep = Constants.TEMP_STEP
     )
     private int temp;
 
-    @UpnpStateVariable(
+/*    @UpnpStateVariable(
             defaultValue = "Normal",
             allowedValues = {"Normal", "Fry", "Boil", "Steam"}
     )
-    private String cookingMode;
+    private String cookingMode;*/
 
 
     public CookingControl() {
@@ -47,31 +49,31 @@ public class CookingControl {
     }
 
     @UpnpAction
-    public void increaseVolume() {
-        if (temp + 10 <= Constants.TEMP_MAX) {
-            temp += 10;
+    public void increaseTemp() {
+        if (temp + Constants.TEMP_STEP <= Constants.TEMP_MAX) {
+            temp += Constants.TEMP_STEP;
             getPropertyChangeSupport().firePropertyChange(Constants.TEMP, null, null);
         }
     }
 
     @UpnpAction
-    public void decreaseVolume() {
-        if (temp - 10 >= Constants.TEMP_MIN) {
-            temp -= 10;
+    public void decreaseTemp() {
+        if (temp - Constants.TEMP_STEP >= Constants.TEMP_MIN) {
+            temp -= Constants.TEMP_STEP;
             getPropertyChangeSupport().firePropertyChange(Constants.TEMP, null, null);
         }
     }
 
-    @UpnpAction(out = @UpnpOutputArgument(name = Constants.OUT))
-    public String getAudioMode() {
+/*    @UpnpAction(out = @UpnpOutputArgument(name = Constants.OUT))
+    public String getCookingMode() {
         return cookingMode;
     }
 
     @UpnpAction
-    public void setAudioMode(@UpnpInputArgument(name = Constants.IN) String cookingMode) {
+    public void setCookingMode(@UpnpInputArgument(name = Constants.IN) String cookingMode) {
         if (this.cookingMode.equalsIgnoreCase(cookingMode)) {
             this.cookingMode = cookingMode;
             getPropertyChangeSupport().firePropertyChange(Constants.COOKING_MODE, null, null);
         }
-    }
+    }*/
 }

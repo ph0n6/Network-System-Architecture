@@ -1,5 +1,7 @@
 package InductionHob.View;
 
+import InductionHob.Constants;
+
 import InductionHob.Controller.ControllerInterface;
 import InductionHob.Model.CookingMode;
 import InductionHob.Model.InductionHob;
@@ -11,6 +13,7 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import InductionHob.Model.Service.CookingControl;
 
 public class View implements Initializable, ViewInterface {
     private ControllerInterface controller;
@@ -78,8 +81,9 @@ public class View implements Initializable, ViewInterface {
             System.out.println("System Locked");
             return;
         }
-        if (inductionHob.getTemp() < 2200) {
-            inductionHob.setTemp(inductionHob.getTemp() + 200);;
+        if (inductionHob.getTemp() < Constants.TEMP_MAX) {
+            inductionHob.setTemp(inductionHob.getTemp() + Constants.TEMP_STEP);;
+            controller.increaseTemp();
             System.out.println("Increase Temp");
         } else {
             System.out.println("Already Max Temp");
@@ -96,8 +100,9 @@ public class View implements Initializable, ViewInterface {
             System.out.println("System Locked");
             return;
         }
-        if (inductionHob.getTemp() > 0) {
-            inductionHob.setTemp(inductionHob.getTemp() - 200);
+        if (inductionHob.getTemp() > Constants.TEMP_MIN) {
+           inductionHob.setTemp(inductionHob.getTemp() - Constants.TEMP_STEP);
+            controller.decreaseTemp();
             System.out.println("Decrease Temp");
         } else {
             System.out.println("Already Min Temp");
@@ -126,7 +131,7 @@ public class View implements Initializable, ViewInterface {
             System.out.println("Power off");
             powerButton.setSelected(false);
             disableAllPower(true);
-            controller.power(true);
+            controller.power(false);
 
             inductionHob = new InductionHob();
 
@@ -141,7 +146,6 @@ public class View implements Initializable, ViewInterface {
             System.out.println("Power on");
             powerButton.setSelected(true);
             disableAllPower(false);
-
             controller.power(true);
         }
     }
@@ -228,4 +232,16 @@ public class View implements Initializable, ViewInterface {
         });
     }
 
+    @Override
+    public void onTempChange(int newValue) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                if (newValue <= Constants.TEMP_MAX && newValue >= Constants.TEMP_MIN) {
+                    inductionHob.setTemp(newValue);
+                    setTempDisplay();
+                }
+            }
+        });
+    }
 }

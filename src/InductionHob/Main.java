@@ -17,10 +17,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        URL url = new File("src/InductionHob/resources/view.fxml").toURL();
+/*        URL url = new File("resources/view.fxml").toURL();
         FXMLLoader fxmlLoader = new FXMLLoader(url);
+        Parent root = fxmlLoader.load();*/
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/view.fxml"));
         Parent root = fxmlLoader.load();
 
+        // controller instance to init model attribute
         view = fxmlLoader.<View>getController();
         ControllerInterface controller = new Controller(view);
         view.setController(controller);

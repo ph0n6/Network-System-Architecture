@@ -1,6 +1,7 @@
 package InductionHob.Model.Service;
 
 import InductionHob.Constants;
+import InductionHob.Model.InductionHob;
 import org.fourthline.cling.binding.annotations.*;
 
 import java.beans.PropertyChangeSupport;

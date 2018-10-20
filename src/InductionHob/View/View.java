@@ -213,6 +213,8 @@ public class View implements Initializable, ViewInterface {
                     powerButton.setSelected(true);
                     disableAllPower(false);
 
+//                    inductionHob = new InductionHob();
+
 //                    controller.power(true);
                 } else {
                     inductionHob.setOn(false);
